@@ -1,5 +1,21 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link, Route, Switch } from 'react-router-dom';
+import { 
+    Button,   
+    Collapse,
+    Navbar,
+    NavbarToggler,
+    NavbarBrand,
+    Nav,
+    NavItem,
+    NavLink,
+    UncontrolledDropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem } from 'reactstrap';
+import { BrowserRouter as Router } from 'react-router-dom'
+
+//import Button from '../components/button';
 
 export default class Navigation extends Component {
     constructor(props) {
@@ -10,15 +26,6 @@ export default class Navigation extends Component {
     }
 
     componentDidMount() {
-        // get current path and set selected
-        // let currentPath = this.props.router.location.pathname.replace('/', '');
-        // // give path '/' a path of home
-        // if (currentPath.length === 0) {
-        //     currentPath = 'upload';
-        // }
-        // this.setState({
-        //     selected: currentPath
-        // });
     }
 
     onChange(e) {
@@ -27,30 +34,43 @@ export default class Navigation extends Component {
         });
     }
 
-    _checkActive(elementId) {
-        // if current selected button has the same class names, return class name with active flag
-        if (elementId === this.state.selected) {
-            return 'tab-title active';
-        } else {
-            return 'tab-title';
-        }
-    }
 
     render() {
-        return (
+        return ( 
             <header>
-                <div className='header-container container'>
-                    <a href='/'>
-                        <h5 className='right'><span className='icon icon-sysicon-maleavatar icon-left-text' style={{ 'fontSize': '20px' }}></span>Hello, {this.props.userFirstName}</h5>
-                    </a>
-                </div>
-                <div className='nav-bar container'>
-                    <nav className='bg-nm'>
-                        {/* <ul className='tabs ghost'>
-                            <Link to='/upload'><li className={this._checkActive('upload')}><button id='upload' onClick={e => this.onChange(e.target.id)}>Upload</button></li></Link>
-                        </ul> */}
-                    </nav>
-                </div>
+                <div>
+                    <Navbar className="nav-bar" color="light" light expand="md">
+                    <Link to="/"> <NavbarBrand>PDF Terminator</NavbarBrand></Link>
+                        <NavbarToggler onClick={this.toggle} />
+                        <Collapse isOpen={this.state.isOpen} navbar>
+                        <Nav className="ml-auto" navbar>
+                            <NavItem>
+                            <Link to="/rules"> <NavLink>Rules</NavLink></Link>
+                            </NavItem>
+                            <NavItem>
+                            <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+                            </NavItem>
+                            <UncontrolledDropdown nav inNavbar>
+                            <DropdownToggle nav caret>
+                                Options
+                            </DropdownToggle>
+                            <DropdownMenu right>
+                                <DropdownItem>
+                                Option 1
+                                </DropdownItem>
+                                <DropdownItem>
+                                Option 2
+                                </DropdownItem>
+                                <DropdownItem divider />
+                                <DropdownItem>
+                                Reset
+                                </DropdownItem>
+                            </DropdownMenu>
+                            </UncontrolledDropdown>
+                        </Nav>
+                        </Collapse>
+                    </Navbar>
+                    </div>
             </header>
 
         );

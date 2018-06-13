@@ -172,7 +172,8 @@ body {
   
   
   .nav-bar{
-    padding: 10px 20px 0px 20px;
+    background-color: #074a7a;
+    color:#f1f1f1;
   }
   
   /*END OF HEADER*/
