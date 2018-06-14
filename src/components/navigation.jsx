@@ -46,7 +46,7 @@ export default class Navigation extends Component {
       <header>
         <div>
           <Navbar
-            style={{ backgroundColor: "#9A8C8C" }}
+            style={{ backgroundColor: "#D64E4E" }}
             className="nav-bar"
             dark
             expand="md"
