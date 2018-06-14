@@ -12,12 +12,12 @@ class App extends Component {
     return (
 
       <div className="App">
-      <Main />
-      <Switch>
-        <Route exact path='/' component={FileUpload}/>
-        <Route path='/rules' component={Rules}/>
-      </Switch>
-    </div>
+        <Main />
+        <Switch>
+          <Route exact path='/' component={FileUpload} />
+          <Route path='/rules' component={Rules} />
+        </Switch>
+      </div>
     );
   }
 }
