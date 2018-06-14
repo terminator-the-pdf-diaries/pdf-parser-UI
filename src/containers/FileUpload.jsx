@@ -4,6 +4,7 @@ import { Button } from "reactstrap";
 import PDFViewer from "./PDFViewer";
 
 import { upload } from "../action";
+import ResultTable from "./Table";
 
 class FileUpload extends Component {
   constructor(props) {
@@ -17,7 +18,8 @@ class FileUpload extends Component {
       filesToUpload: [],
       value: null,
       show: false,
-      key: Math.random()
+      key: Math.random(),
+      result: {}
     };
   }
 
@@ -52,11 +54,14 @@ class FileUpload extends Component {
   };
 
   clearFiles() {
-    this.setState({ filesToUpload: [], show: false, value: null });
+    this.setState({ filesToUpload: [], show: false, value: null, result: {} });
   }
 
   submitFiles() {
-    upload(this.state.filesToUpload);
+    upload(this.state.filesToUpload)
+      .then(response => {
+        this.setState({ result: response.data })
+      });
   }
 
   render() {
@@ -108,7 +113,7 @@ class FileUpload extends Component {
                   <Button
                     outline
                     color="secondary"
-                    itemOnClick={this.submitFiles}
+                    onClick={this.submitFiles}
                   >
                     Terminate
                   </Button>
@@ -125,14 +130,17 @@ class FileUpload extends Component {
               )}
             </div>
           </div>
-          {false ? (
-            <div
-              className="medium-6 large-6"
-              style={{ margin: "0 auto", padding: "20px" }}
-            >
-              <div className="Upload-box" />
-            </div>
-          ) : null}
+          {
+            Object.keys(this.state.result).length > 0 ?
+              <div
+                className="medium-6 large-6"
+                style={{ margin: "0 auto", padding: "20px" }}
+              >
+                <div className="Upload-box" >
+                  <ResultTable data={this.state.result} />
+                </div>
+              </div> : null
+          }
         </div>
         <div className="row">
           <div

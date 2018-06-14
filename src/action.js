@@ -12,6 +12,11 @@ function upload(data, fileName) {
 
 };
 
+function getTransaction(id) {
+  const url = baseUrl + 'transaction/' + id;
+  return axios.get(url)
+}
+
 function getRules() {
   const url = baseUrl + 'rules'
   return axios.get(url);
@@ -27,4 +32,4 @@ async function getRule(id) {
   }
 };
 
-export { upload, getRules, getRule }
+export { upload, getRules, getRule, getTransaction }
