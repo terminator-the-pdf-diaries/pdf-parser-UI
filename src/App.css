@@ -1,9 +1,11 @@
-
 .App {
   text-align: center;
-  background-color: #dce7eb;
+  background-color: #fff;
+  background-image: url("background.png");
 }
-
+.nav-bar {
+  background-color: "#C2BEBE";
+}
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
@@ -27,16 +29,19 @@
 .Pdf-box {
   margin: 90px 30px 0 30px;
   box-shadow: 0 10px 0 0 #ff6873 inset;
-  background-color: #fefffa;
+  background-color: #fff;
   padding: 30px;
 }
 
-
 .Upload-box {
-  box-shadow: 0 10px 0 0 #ff6873 inset;
-  background-color: #fefffa;
+  border-top: 10px solid #ff6873;
+  margin-top: 10%;
+  background-color: #fff;
   padding: 30px;
   min-width: 600px;
+  border-bottom-left-radius: 2%;
+  border-bottom-right-radius: 2%;
+  box-shadow: 2px 5px #d3d3d3;
 }
 
 .card {
@@ -44,6 +49,10 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
