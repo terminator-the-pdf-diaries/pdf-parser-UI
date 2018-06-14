@@ -1,5 +1,10 @@
-import React, { Component } from 'react';
-import { Link, Route, Switch } from 'react-router-dom';
+import React, {
+  Component
+} from 'react';
+import {
+  Route,
+  Switch
+} from 'react-router-dom';
 import './App.css';
 
 //Layouts
@@ -11,13 +16,25 @@ class App extends Component {
   render() {
     return (
 
-      <div className="App">
-      <Main />
-      <Switch>
-        <Route exact path='/' component={FileUpload}/>
-        <Route path='/rules' component={Rules}/>
-      </Switch>
-    </div>
+      <
+      div className = "App" >
+      <
+      Main / >
+      <
+      Switch >
+      <
+      Route exact path = '/'
+      component = {
+        FileUpload
+      }
+      /> <
+      Route path = '/rules'
+      component = {
+        Rules
+      }
+      /> <
+      /Switch> <
+      /div>
     );
   }
 }

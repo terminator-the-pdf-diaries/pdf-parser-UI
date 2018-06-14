@@ -1,0 +1,72 @@
+[{
+    "Arbys": {
+        "Begin_of_Page_Text": "For the Year",
+        "Begin_of_Table_Text": "Remaining Commitment",
+        "End_of_Page_Text": "Proprietary Confidential Business Information",
+        "End_of_Table_Text": "Opening Equity",
+        "headers": ["Total Fund", "Investor's Allocation"],
+        "keyword_match": [{
+                "Total Contributions": "Contributions"
+            },
+            {
+                "Total Distributions": "Distributions"
+            },
+            {
+                "Realized Gain/(Loss)": "Realized Gain/Loss"
+            },
+            {
+                "Professional Fees": "Ordinary Income"
+            },
+            {
+                "Other Expenses": "Ordinary Income"
+            },
+            {
+                "Change in Unrealized": "Unrealized MTM"
+            },
+            {
+                "Idle Funds Interest Income": "Ordinary Income"
+            },
+            {
+                "Equity Transfer": "Ordinary Income"
+            },
+            {
+                "Closing Equity": "Ending Equity Balance"
+            }
+        ]
+    },
+    "WingStop": {
+        "Begin_of_Page_Text": "For the Year",
+        "Begin_of_Table_Text": "Remaining Commitment",
+        "End_of_Page_Text": "Proprietary Confidential Business Information",
+        "End_of_Table_Text": "Opening Equity",
+        "headers": ["Total Fund", "Investor's Allocation"],
+        "keyword_match": [{
+                "Total Contributions": "Contributions"
+            },
+            {
+                "Total Distributions": "Distributions"
+            },
+            {
+                "Realized Gain/(Loss)": "Realized Gain/Loss"
+            },
+            {
+                "Professional Fees": "Ordinary Income"
+            },
+            {
+                "Other Expenses": "Ordinary Income"
+            },
+            {
+                "Change in Unrealized": "Unrealized MTM"
+            },
+            {
+                "Idle Funds Interest Income": "Ordinary Income"
+            },
+            {
+                "Equity Transfer": "Ordinary Income"
+            },
+            {
+                "Closing Equity": "Ending Equity Balance"
+            }
+        ]
+    }
+}]

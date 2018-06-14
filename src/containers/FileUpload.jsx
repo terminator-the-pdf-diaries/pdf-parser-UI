@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
+import { Container, Row, Col } from 'reactstrap';
 import Navigation from '../components/navigation';
 import Button from '../components/button';
 import Input from '../components/input';
@@ -107,42 +108,45 @@ class FileUpload extends Component {
 
         return (
 
-            <div className='profile-wrapper row'>
-                <div className="columns medium-10 large-10" style={{ marginBottom: '1rem' }}>
-                    <div className="card" style={{ width: '100%', padding: '2rem', margin: '0px', textAlign: 'center', maxWidth: 'none' }}>
-                        <Dropzone
-                            accept="image/*, .xls, .xlsx, .doc, .docx, .pdf, .txt, .heic"
-                            onDrop={this.onDrop.bind(this)}
-                            style={dropzoneStyles}
+            <Container>
+            <Row style={{paddingTop:'3em'}}>
+              <Col>
+                <div className="card" style={{ width: '100%', padding: '2rem', margin: '0px', textAlign: 'center', maxWidth: 'none' }}>
+                    <Dropzone
+                        accept="image/*, .xls, .xlsx, .doc, .docx, .pdf, .txt, .heic"
+                        onDrop={this.onDrop.bind(this)}
+                        style={dropzoneStyles}
 
-                        >
-                            <div>
-                                <p>Drag and drop files here</p>
-                                <button className="dull tiny" type="button">
-                                    Choose File(s)
-                                </button>
-                            </div>
-                        </Dropzone>
-                        {this.state.show && <div style={{ paddingTop: '2em' }}>
-                            <aside>
-                                <ul style={{ listStyleType: 'none', paddingTop: '1em' }}>
-                                    {
-                                        this.state.filesToUpload.map(f => <li key={`${f.name}`}>{this.formatFileName(f.name)} - {f.size} bytes</li>)
-                                    }
-                                </ul>
-                            </aside>
-                            <Button label={'Terminate'} icon={'icon-upload'} itemOnClick={this.submitFiles} />
-                            <button className="dull" onClick={this.clearFiles} type="button" style={{ marginLeft: '1em' }}>
-                                Clear
+                    >
+                        <div>
+                            <p>Drag and drop files here</p>
+                            <button className="dull tiny" type="button">
+                                Choose File(s)
                             </button>
-                        </div>}
-                    </div>
-                </div>
-
-            </div>
+                        </div>
+                    </Dropzone>
+                    {this.state.show && <div style={{ paddingTop: '2em' }}>
+                        <aside>
+                            <ul style={{ listStyleType: 'none', paddingTop: '1em' }}>
+                                {
+                                    this.state.filesToUpload.map(f => <li key={`${f.name}`}>{this.formatFileName(f.name)} - {f.size} bytes</li>)
+                                }
+                            </ul>
+                        </aside>
+                        <Button label={'Terminate'} icon={'icon-upload'} itemOnClick={this.submitFiles} />
+                        <button className="dull" onClick={this.clearFiles} type="button" style={{ marginLeft: '1em' }}>
+                            Clear
+                        </button>
+                    </div>}
+                    </div>     
+              </Col>
+            </Row>
+          </Container>
         );
     }
 }
+
+
 
 
 export default FileUpload;

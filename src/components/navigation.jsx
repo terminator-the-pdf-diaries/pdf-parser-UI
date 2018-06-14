@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Link, Route, Switch } from 'react-router-dom';
-import { 
-    Button,   
+import { Link } from 'react-router-dom';
+import {
+    Button,
     Collapse,
     Navbar,
     NavbarToggler,
@@ -12,7 +12,8 @@ import {
     UncontrolledDropdown,
     DropdownToggle,
     DropdownMenu,
-    DropdownItem } from 'reactstrap';
+    DropdownItem
+} from 'reactstrap';
 import { BrowserRouter as Router } from 'react-router-dom'
 
 //import Button from '../components/button';
@@ -21,8 +22,15 @@ export default class Navigation extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selected: 'home'
+            selected: 'home',
+            isOpen: false
         };
+        this.toggle = this.toggle.bind(this);
+    }
+    toggle() {
+        this.setState({
+            isOpen: !this.state.isOpen
+        });
     }
 
     componentDidMount() {
@@ -36,41 +44,41 @@ export default class Navigation extends Component {
 
 
     render() {
-        return ( 
+        return (
             <header>
                 <div>
-                    <Navbar className="nav-bar" color="light" light expand="md">
-                    <Link to="/"> <NavbarBrand>PDF Terminator</NavbarBrand></Link>
+                    <Navbar style={{ backgroundColor: '#074a7a' }} className="nav-bar" dark expand="md">
+                        <Link to="/"> <NavbarBrand style={{ color: '#fff' }}>PDF Terminator</NavbarBrand></Link>
                         <NavbarToggler onClick={this.toggle} />
                         <Collapse isOpen={this.state.isOpen} navbar>
-                        <Nav className="ml-auto" navbar>
-                            <NavItem>
-                            <Link to="/rules"> <NavLink>Rules</NavLink></Link>
-                            </NavItem>
-                            <NavItem>
-                            <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
-                            </NavItem>
-                            <UncontrolledDropdown nav inNavbar>
-                            <DropdownToggle nav caret>
-                                Options
+                            <Nav className="ml-auto" navbar>
+                                <NavItem>
+                                    <Link to="/rules"> <NavLink>Rules</NavLink></Link>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+                                </NavItem>
+                                <UncontrolledDropdown nav inNavbar>
+                                    <DropdownToggle nav caret>
+                                        Options
                             </DropdownToggle>
-                            <DropdownMenu right>
-                                <DropdownItem>
-                                Option 1
+                                    <DropdownMenu right>
+                                        <DropdownItem>
+                                            Option 1
                                 </DropdownItem>
-                                <DropdownItem>
-                                Option 2
+                                        <DropdownItem>
+                                            Option 2
                                 </DropdownItem>
-                                <DropdownItem divider />
-                                <DropdownItem>
-                                Reset
+                                        <DropdownItem divider />
+                                        <DropdownItem>
+                                            Reset
                                 </DropdownItem>
-                            </DropdownMenu>
-                            </UncontrolledDropdown>
-                        </Nav>
+                                    </DropdownMenu>
+                                </UncontrolledDropdown>
+                            </Nav>
                         </Collapse>
                     </Navbar>
-                    </div>
+                </div>
             </header>
 
         );
