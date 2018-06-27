@@ -2,10 +2,12 @@ import axios from 'axios';
 
 const baseUrl = "http://127.0.0.1:5000/api/";
 
-function upload(data, fileName) {
+
+function upload(data) {
   const newData = new FormData();
-  newData.append('files', data[0])
-  newData.append('fileName', fileName);
+  data.forEach(file => {
+    newData.append("files[]", file, file.fileName);
+  });
 
   const url = baseUrl + 'upload';
   return axios.post(url, newData);

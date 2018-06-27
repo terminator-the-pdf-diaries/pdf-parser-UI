@@ -11,7 +11,6 @@ class FileUpload extends Component {
     super(props);
     this.submitFiles = this.submitFiles.bind(this);
     this.clearFiles = this.clearFiles.bind(this);
-    this.formatFileName = this.formatFileName.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.onDrop = this.onDrop.bind(this);
     this.state = {
@@ -41,13 +40,6 @@ class FileUpload extends Component {
     return true;
   }
 
-  formatFileName(fileName) {
-    var test_str = '|text to get| Other text.... migh have "|"\'s ...';
-    var start_pos = fileName.indexOf("_") + 1;
-    var end_pos = fileName.indexOf("_", start_pos);
-    var formattedFileName = fileName.substring(start_pos, end_pos);
-    return formattedFileName;
-  }
 
   onDocumentLoad = ({ numPages }) => {
     this.setState({ numPages });
@@ -105,7 +97,7 @@ class FileUpload extends Component {
                     <ul style={{ listStyleType: "none", paddingTop: "1em" }}>
                       {this.state.filesToUpload.map(f => (
                         <li key={`${f.name}`}>
-                          {this.formatFileName(f.name)} - {f.size} bytes
+                          {f.name} - {f.size} bytes
                         </li>
                       ))}
                     </ul>
@@ -130,27 +122,24 @@ class FileUpload extends Component {
               )}
             </div>
           </div>
+          {/*  */}
+        </div>
+        <div className="row" style={{ padding: "40px" }} >
           {
             Object.keys(this.state.result).length > 0 ?
-              <div
-                className="medium-6 large-6"
-                style={{ margin: "0 auto", padding: "20px" }}
-              >
-                <div className="Upload-box" >
-                  <ResultTable data={this.state.result} />
-                </div>
-              </div> : null
+              this.state.result.map(data => {
+                return (
+                  <div
+                    className="col-sm-6"
+                    style={{ "marginTop": "30px" }}
+                  >
+                    <div className="card card-body" >
+                      <ResultTable data={data} />
+                    </div>
+                  </div>
+                )
+              }) : null
           }
-        </div>
-        <div className="row">
-          <div
-            className="medium-12 large-12"
-            style={{ margin: "0 auto", padding: "5px" }}
-          >
-            {this.state.filesToUpload.length > 0 ? (
-              <PDFViewer file={this.state.filesToUpload[0]} />
-            ) : null}
-          </div>
         </div>
       </div>
     );
