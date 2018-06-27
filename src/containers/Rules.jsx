@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link, Route } from "react-router-dom";
+import { getRules } from '../action';
 import {
   Card,
   Button,
@@ -20,8 +21,17 @@ class Rules extends Component {
     super(props);
     this.toggle = this.toggle.bind(this);
     this.loadPartners = this.loadPartners.bind(this);
-    this.state = {};
+    this.state = {
+      rules: null
+    };
     dropdownOpen: false;
+  }
+
+  componentDidMount() {
+    getRules()
+      .then(response => {
+        this.setState({ rules: response.data });
+      })
   }
 
   toggle() {
@@ -44,297 +54,92 @@ class Rules extends Component {
           </Col>
         </Row>
         <Row style={{ padding: "1em" }}>
-          {this.loadPartners(partners)}
-          <Col sm="6">
-            <Card body>
-              <CardTitle className="card-title">Arbys</CardTitle>
-              <CardText>
-                <p className="table-headers">Rules</p>
-                <Table size="sm">
-                  <thead>
-                    <tr>
-                      <th>Rule</th>
-                      <th>Text</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>start of page</td>
-                      <td>For the Year</td>
-                    </tr>
-                    <tr>
-                      <td>start of table</td>
-                      <td>Remaining Commitment</td>
-                    </tr>
-                    <tr>
-                      <td>end of page</td>
-                      <td>Proprietary Confidential Business Information</td>
-                    </tr>
-                    <tr>
-                      <td>end of table</td>
-                      <td>Opening Equity</td>
-                    </tr>
-                  </tbody>
-                </Table>
-                <p className="table-headers">Terminology</p>
-                <Table size="sm">
-                  <thead>
-                    <tr>
-                      <th>Partner</th>
-                      <th>Northwestern Mutual</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Total Contributions</td>
-                      <td>Contributions</td>
-                    </tr>
-                    <tr>
-                      <td>Total Distributions</td>
-                      <td>Distributions</td>
-                    </tr>
-                    <tr>
-                      <td>Realized Gain/(Loss)</td>
-                      <td>Realized Gain/Loss</td>
-                    </tr>
-                    <tr>
-                      <td>Professional Fees</td>
-                      <td>Ordinary Income</td>
-                    </tr>
-                    <tr>
-                      <td>Change in Unrealized</td>
-                      <td>Ordinary Income</td>
-                    </tr>
-                    <tr>
-                      <td>Professional Fees</td>
-                      <td>Unrealized MTM</td>
-                    </tr>
-                    <tr>
-                      <td>Idle Funds Interest Income</td>
-                      <td>Ordinary Income</td>
-                    </tr>
-                    <tr>
-                      <td>Equity Transfer"</td>
-                      <td>Ordinary Income</td>
-                    </tr>
-                    <tr>
-                      <td>Closing Equity</td>
-                      <td>Ending Equity Balance</td>
-                    </tr>
-                  </tbody>
-                </Table>
-                <p className="headers-text">
-                  Headers: Total Fund, Investor's Allocation
-                </p>
-              </CardText>
-              <ButtonDropdown
-                isOpen={this.state.dropdownOpen}
-                toggle={this.toggle}
-                className="rule-button"
-              >
-                <DropdownToggle caret color="info">
-                  Edit
-                </DropdownToggle>
-                <DropdownMenu>
-                  <DropdownItem>Rules</DropdownItem>
-                  <DropdownItem>Keywords</DropdownItem>
-                  <DropdownItem>Headers</DropdownItem>
-                </DropdownMenu>
-              </ButtonDropdown>
-            </Card>
-          </Col>
-          <Col sm="6">
-            <Card body>
-              <CardTitle>Wing Stop</CardTitle>
-              <CardText>
-                <p className="table-headers">Rules</p>
-                <Table size="sm">
-                  <thead>
-                    <tr>
-                      <th>Rule</th>
-                      <th>Text</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>start of page</td>
-                      <td>For the Year</td>
-                    </tr>
-                    <tr>
-                      <td>start of table</td>
-                      <td>Remaining Commitment</td>
-                    </tr>
-                    <tr>
-                      <td>end of page</td>
-                      <td>Proprietary Confidential Business Information</td>
-                    </tr>
-                    <tr>
-                      <td>end of table</td>
-                      <td>Opening Equity</td>
-                    </tr>
-                  </tbody>
-                </Table>
-                <p className="table-headers">Terminology</p>
-                <Table size="sm">
-                  <thead>
-                    <tr>
-                      <th>Partner</th>
-                      <th>Northwestern Mutual</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Total Contributions</td>
-                      <td>Contributions</td>
-                    </tr>
-                    <tr>
-                      <td>Total Distributions</td>
-                      <td>Distributions</td>
-                    </tr>
-                    <tr>
-                      <td>Realized Gain/(Loss)</td>
-                      <td>Realized Gain/Loss</td>
-                    </tr>
-                    <tr>
-                      <td>Professional Fees</td>
-                      <td>Ordinary Income</td>
-                    </tr>
-                    <tr>
-                      <td>Change in Unrealized</td>
-                      <td>Ordinary Income</td>
-                    </tr>
-                    <tr>
-                      <td>Professional Fees</td>
-                      <td>Unrealized MTM</td>
-                    </tr>
-                    <tr>
-                      <td>Idle Funds Interest Income</td>
-                      <td>Ordinary Income</td>
-                    </tr>
-                    <tr>
-                      <td>Equity Transfer"</td>
-                      <td>Ordinary Income</td>
-                    </tr>
-                    <tr>
-                      <td>Closing Equity</td>
-                      <td>Ending Equity Balance</td>
-                    </tr>
-                  </tbody>
-                </Table>
-                <p className="headers-text">
-                  Headers: Total Fund, Investor's Allocation
-                </p>
-              </CardText>
-
-              <ButtonDropdown className="rule-button">
-                <DropdownToggle caret color="info">
-                  Edit
-                </DropdownToggle>
-                <DropdownMenu>
-                  <DropdownItem>Rules</DropdownItem>
-                  <DropdownItem>Keywords</DropdownItem>
-                  <DropdownItem>Headers</DropdownItem>
-                </DropdownMenu>
-              </ButtonDropdown>
-            </Card>
-          </Col>
-        </Row>
-        <Row>
-          {" "}
-          <Col sm="6">
-            <Card body>
-              <CardTitle>TGI Fridays</CardTitle>
-              <CardText>
-                <p className="table-headers">Rules</p>
-                <Table size="sm">
-                  <thead>
-                    <tr>
-                      <th>Rule</th>
-                      <th>Text</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>start of page</td>
-                      <td>For the Year</td>
-                    </tr>
-                    <tr>
-                      <td>start of table</td>
-                      <td>Remaining Commitment</td>
-                    </tr>
-                    <tr>
-                      <td>end of page</td>
-                      <td>Proprietary Confidential Business Information</td>
-                    </tr>
-                    <tr>
-                      <td>end of table</td>
-                      <td>Opening Equity</td>
-                    </tr>
-                  </tbody>
-                </Table>
-                <p className="table-headers">Terminology</p>
-                <Table size="sm">
-                  <thead>
-                    <tr>
-                      <th>Partner</th>
-                      <th>Northwestern Mutual</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Total Contributions</td>
-                      <td>Contributions</td>
-                    </tr>
-                    <tr>
-                      <td>Total Distributions</td>
-                      <td>Distributions</td>
-                    </tr>
-                    <tr>
-                      <td>Realized Gain/(Loss)</td>
-                      <td>Realized Gain/Loss</td>
-                    </tr>
-                    <tr>
-                      <td>Professional Fees</td>
-                      <td>Ordinary Income</td>
-                    </tr>
-                    <tr>
-                      <td>Change in Unrealized</td>
-                      <td>Ordinary Income</td>
-                    </tr>
-                    <tr>
-                      <td>Professional Fees</td>
-                      <td>Unrealized MTM</td>
-                    </tr>
-                    <tr>
-                      <td>Idle Funds Interest Income</td>
-                      <td>Ordinary Income</td>
-                    </tr>
-                    <tr>
-                      <td>Equity Transfer"</td>
-                      <td>Ordinary Income</td>
-                    </tr>
-                    <tr>
-                      <td>Closing Equity</td>
-                      <td>Ending Equity Balance</td>
-                    </tr>
-                  </tbody>
-                </Table>
-                <p className="headers-text">
-                  Headers: Total Fund, Investor's Allocation
-                </p>
-              </CardText>
-              <ButtonDropdown className="rule-button">
-                <DropdownToggle caret color="info">
-                  Edit
-                </DropdownToggle>
-                <DropdownMenu>
-                  <DropdownItem>Rules</DropdownItem>
-                  <DropdownItem>Keywords</DropdownItem>
-                  <DropdownItem>Headers</DropdownItem>
-                </DropdownMenu>
-              </ButtonDropdown>
-            </Card>
-          </Col>
+          {
+            this.state.rules ? this.state.rules.map(rule => {
+              const title = Object.keys(rule)[0];
+              const values = rule[title];
+              return (
+                <Col sm="6">
+                  <Card body >
+                    <CardTitle className="card-title">{title}</CardTitle>
+                    <CardText>
+                      <p className="table-headers">Rules</p>
+                      <Table size="sm">
+                        <thead>
+                          <tr>
+                            <th>Rule</th>
+                            <th>Text</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>start of page</td>
+                            <td>{values.Begin_of_Page_Text}</td>
+                          </tr>
+                          <tr>
+                            <td>end of page</td>
+                            <td>{values.End_of_Page_Text}</td>
+                          </tr>
+                          <tr>
+                            <td>start of table</td>
+                            <td>{values.Begin_of_Table_Text}</td>
+                          </tr>
+                          <tr>
+                            <td>end of table</td>
+                            <td>{values.End_of_Table_Text}</td>
+                          </tr>
+                        </tbody>
+                      </Table>
+                      <p className="table-headers">Terminology</p>
+                      <Table size="sm">
+                        <thead>
+                          <tr>
+                            <th>Partner</th>
+                            <th>Northwestern Mutual</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {
+                            Object.keys(values.keyword_match).map(key => {
+                              return (
+                                <tr>
+                                  <td>{key}</td>
+                                  <td>{values.keyword_match[key]}</td>
+                                </tr>
+                              );
+                            })
+                          }
+                        </tbody>
+                      </Table>
+                      <p className="headers-text">
+                        Headers:
+                        {
+                          values.headers.map((header) => {
+                            return (
+                              <span> {header}, </span>
+                            )
+                          })}
+                      </p>
+                    </CardText>
+                    <ButtonDropdown
+                      isOpen={this.state.dropdownOpen}
+                      // toggle={this.toggle}
+                      className="rule-button"
+                    >
+                      <DropdownToggle caret color="info" key={rule}>
+                        Edit
+                      </DropdownToggle>
+                      <DropdownMenu>
+                        <DropdownItem>Rules</DropdownItem>
+                        <DropdownItem>Keywords</DropdownItem>
+                        <DropdownItem>Headers</DropdownItem>
+                      </DropdownMenu>
+                    </ButtonDropdown>
+                  </Card>
+                </Col>
+              )
+            }) : null
+          }
         </Row>
       </div>
     );
